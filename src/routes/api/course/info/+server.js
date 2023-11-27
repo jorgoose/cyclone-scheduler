@@ -1,3 +1,14 @@
+
+
+// IMPORTANT NOTE:
+// ========================================================================================================================
+// This endpoint is not currently being used in the application.
+// It is an example of how to parse the HTML of a course catalog page to extract the course title and description.
+// Ideally, this functionality will be implemented using a serverless function (i.e. AWS Lambda, Cloud Functions, etc.)
+// in order to update the course information in the database, rather than updating the data directly on the client-side 
+// (which is not necessary and wastes requests, bandwidth, and processing power).
+// ========================================================================================================================
+
 // src/routes/parseCourse.js
 import { json } from '@sveltejs/kit';
 import { parse } from 'node-html-parser';
