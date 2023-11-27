@@ -1883,16 +1883,16 @@
     
 
 
-<main class="bg-gray-100 min-h-screen">
+<main class="bg-gray-900 min-h-screen text-white">
     <!-- Header and Dropdown Section -->
-    <div class="py-6 bg-white shadow-md">
+    <div class="py-6 bg-gray-800 shadow-md">
         <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-semibold text-gray-800">Course Search</h1>
-            <p class="text-gray-600">Search for courses by department, semester, and more.</p>
+            <h1 class="text-3xl font-semibold text-red-700">Cyclone Scheduler</h1>
+            <p class="text-gray-300">Search for courses by department, semester, and more.</p>
         </div>
         <!-- Select a department from dropdown (Options: ACCT and FIN) -->
         <div class="container mx-auto px-4 mt-4">
-            <select class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" on:change={handleDeptChange}>
+            <select class="block w-full py-2 px-3 border border-gray-600 bg-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-red-700 focus:border-red-700 sm:text-sm text-white" on:change={handleDeptChange}>
                 <option value="">Select a department</option>
                 <option value="ACCT">Accounting</option>
                 <option value="ACSCI">Actuarial Science</option>
@@ -2009,13 +2009,12 @@
     <!-- Courses Grid Section -->
     <section class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {#each $courses as course}
-            <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
-                <h2 class="text-xl font-semibold mb-2">{course.deptCode} {course.classNumber}</h2>
-                <p class="text-gray-700 mb-1">{course.classTitle}</p>
-                <p class="text-gray-600">Credits: {course.creditHigh}</p>
-                <!-- Professor Information, uses ternary in case instructor is empty -->
-                
-                <p class="text-gray-600">Instructor: {course.sections[0].sectionTimes[0].instrName ? course.sections[0].sectionTimes[0].instrName : 'TBA'
+            <div class="bg-gray-800 p-4 border border-gray-700 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-xl font-semibold mb-2 text-red-600">{course.deptCode} {course.classNumber}</h2>
+                <p class="text-gray-400 mb-1">{course.classTitle}</p>
+                <p class="text-gray-500">Credits: {course.creditHigh}</p>
+                <!-- Professor Information -->
+                <p class="text-gray-500">Instructor: {course.sections[0].sectionTimes[0].instrName ? course.sections[0].sectionTimes[0].instrName : 'TBA'
                 }</p>
                 <!-- More course details can be added here -->
             </div>
