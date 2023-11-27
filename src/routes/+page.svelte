@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+
     import { writable } from 'svelte/store';
 
     const courses = writable([]);
@@ -8,6 +9,8 @@
 
     // When the component mounts, fetch the courses from the API using a POST request
     onMount(async () => {
+
+        // Part 1: Fetch the courses from the API
         const res = await fetch('/api/courses', {
             method: 'POST',
             headers: {
@@ -936,12 +939,60 @@
         });
         const data = await res.json();
         courses.set(data.response);
+
+        // TODO: This functionality and code will be implemented later when the backend / application is moved to the cloud
+
+        // ====================================================================================================
+        // Part 2: Fetch additional information about each of the courses.
+        // Send the catalogUrl property of each course via POST to /api/course/info to get the additional information
+        // about each course. Then, update the course object with the additional information.
+
+        // Test with just first course for now
+        // for (let i = 0; i < 1; i++) {
+
+        //     // console.log(data.response[i].catalogUrl)
+
+        //     const res = await fetch('/api/course/info', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             "catalogUrl": data.response[i].catalogUrl
+        //         })
+        //     });
+        //     const courseInfo = await res.json();
+        //     data.response[i].fullCourseTitle = courseInfo.fullCourseTitle;
+        //     data.response[i].courseDescription = courseInfo.courseDescription;
+        // }
+
+        // for (let i = 0; i < data.response.length; i++) {
+
+        //     // console.log(data.response[i].catalogUrl)
+
+        //     const res = await fetch('/api/course/info', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             "catalogUrl": data.response[i].catalogUrl
+        //         })
+        //     });
+        //     const courseInfo = await res.json();
+        //     data.response[i].fullCourseTitle = courseInfo.fullCourseTitle;
+        //     data.response[i].courseDescription = courseInfo.courseDescription;
+        // }
+        // ====================================================================================================
+        
+
     });
 
     // When the user selects a department, update the dept variable and fetch the courses again
     function handleDeptChange(event) {
         dept = event.target.value;
         fetchCourses();
+        // Fetch additional information about the courses
     }
 
     // Fetch the courses from the API using a POST request
